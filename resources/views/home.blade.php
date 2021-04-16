@@ -38,7 +38,7 @@
                                 <td> {{ Str::limit($post->body, 40)  }}</td>
                                 <td> {{ $post->created_at->format('d D M Y H:s') }}</td>
                                 <td class="text-right">
-                                    @if(Auth::user()->uuid === $post->uuid)
+                                    @if(Auth::user()->uuid === $post->user_id)
                                         <a class="btn btn-secondary"
                                            href="{{ route('show-post', ['id' => $post->uuid]) }}">
                                             <i class="fa fa-pencil"></i> Edit
@@ -48,7 +48,7 @@
                                         </button>
                                     @endif
 
-                                    @if(Auth::user()->uuid === $post->uuid)
+                                    @if(Auth::user()->uuid === $post->user_id)
                                         <a class="btn btn-danger delete"
                                            href="{{ route('delete-post', ['id' => $post->uuid]) }}">
                                             <i class="fa fa-trash"></i> Delete

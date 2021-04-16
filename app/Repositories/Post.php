@@ -15,7 +15,7 @@ class Post extends Search
 
     public function getByPageSize($size)
     {
-        return $this->getModel()->paginate($size);
+        return $this->getModel()->orderBy('created_at', 'DESC')->paginate($size);
     }
 
     public function search($query)

@@ -42,7 +42,7 @@ class Welcome extends Controller
         }elseif (Auth::user()->uuid === $post->user_id) {
             return $this->ajaxWarning("You not allowed to like your own post");
         }
-        $exist = Like::where('user_id', Auth::user()->uuid)->first();
+        $exist = Like::where(['user_id' => Auth::user()->uuid, 'post_id' => $id])->first();
 
         if (empty($exist)) {
             $like = new Like();
